@@ -15,43 +15,7 @@
       </template>
       <v-row v-else>
         <v-col v-for="(item, n) in listPokemon" :key="n" class="five-col-item">
-          <v-card class="pokemon-card" flat variant="outlined" color="primary">
-            <v-card-text class="d-flex flex-column ga-4 text-white">
-              <div class="d-flex">
-                <v-chip size="small" rounded="xl" variant="tonal" color="grey">
-                  <span class="font-weight-bold text-white">
-                    #{{ String(item.id).padStart(3, "0") }}
-                  </span>
-                </v-chip>
-              </div>
-              <v-img
-                alt="img"
-                :src="item.sprites.other.dream_world.front_default"
-                height="120"
-              />
-              <div class="d-flex flex-column ga-4">
-                <span class="text-h6 font-weight-bold text-capitalize">
-                  {{ item.name }}
-                </span>
-                <v-row>
-                  <v-col class="d-flex flex-column align-center">
-                    <span class="text-grey">Weight</span>
-                    <span>{{ item.weight }} kg</span>
-                  </v-col>
-                  <v-col class="d-flex flex-column align-center">
-                    <span class="text-grey">Height</span>
-                    <span>{{ item.height }} m</span>
-                  </v-col>
-                </v-row>
-                <div class="d-flex justify-center">
-                  <span class="text-grey">Type :</span>
-                  <span class="ms-1 text-capitalize">{{
-                    item.types.map((t) => t.type.name).join("/")
-                  }}</span>
-                </div>
-              </div>
-            </v-card-text>
-          </v-card>
+          <PokemonCard :data="item" />
         </v-col>
       </v-row>
     </div>
