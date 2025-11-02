@@ -1,9 +1,11 @@
 import "vuetify/styles";
+import "@mdi/font/css/materialdesignicons.css";
 import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 import { md3 } from "vuetify/blueprints";
-import "@/assets/styles/main.scss"
+import { aliases, mdi } from "vuetify/iconsets/mdi";
+import "@/assets/styles/main.scss";
 
 const light = {
   dark: false,
@@ -31,6 +33,15 @@ export default defineNuxtPlugin((app) => {
       themes: {
         light,
         dark,
+      },
+    },
+    icons: {
+      defaultSet: "mdi",
+      aliases: {
+        ...aliases,
+      },
+      sets: {
+        mdi,
       },
     },
   });
