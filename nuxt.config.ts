@@ -5,6 +5,12 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
   ssr: false,
+  app: {
+    head: {
+      title: "Poke Co",
+      meta: [{ name: "description", content: "List of Pokemon" }],
+    },
+  },
   css: [
     "vuetify/styles",
     "@mdi/font/css/materialdesignicons.css",
