@@ -5,6 +5,11 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
   ssr: false,
+  css: [
+    "vuetify/styles",
+    "@mdi/font/css/materialdesignicons.css",
+    "@/assets/styles/main.scss"
+  ],
   build: {
     transpile: ["vuetify"],
   },
