@@ -11,6 +11,16 @@ export interface IPokemon {
   types: { type: { name: string } }[];
   height: number;
   weight: number;
+  abilities: {
+    ability: {
+      name: string;
+    };
+  }[];
+  moves: {
+    move: {
+      name: string;
+    };
+  }[];
 }
 
 const getPokemon = async (id: number) => {

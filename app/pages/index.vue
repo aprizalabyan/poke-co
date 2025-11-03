@@ -22,6 +22,7 @@
     <div class="d-flex justify-end mt-4">
       <v-pagination v-model="page" :length="maxPage" :total-visible="5" />
     </div>
+    <DetailDialog />
   </v-container>
 </template>
 
@@ -33,14 +34,5 @@ const { loading, listPokemon, page, maxPage } = usePokemonApi();
 .five-col-item {
   flex-basis: 20%;
   max-width: 20%;
-}
-
-.pokemon-card {
-  background: #363636;
-  background: radial-gradient(
-    circle,
-    rgba(54, 54, 54, 1) 0%,
-    rgba(28, 30, 33, 1) 100%
-  );
 }
 </style>

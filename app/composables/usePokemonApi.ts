@@ -19,7 +19,10 @@ async function withConcurrency(tasks: (() => Promise<IPokemon>)[], n = 5) {
 }
 
 function makeRange(start: number, end: number) {
-  return Array.from({ length: Math.max(0, end - start + 1) }, (_, i) => start + i)
+  return Array.from(
+    { length: Math.max(0, end - start + 1) },
+    (_, i) => start + i
+  );
 }
 
 export function usePokemonApi() {
@@ -35,15 +38,15 @@ export function usePokemonApi() {
 
   const maxPage = computed(() => Math.ceil(total / limit));
 
-  watch(page, () => fetchPage())
+  watch(page, () => fetchPage());
 
-  async function fetchPage() {
+  const fetchPage = async () => {
     loading.value = true;
     error.value = null;
     try {
-      const start = startId + (page.value - 1) * limit
-      const end = Math.min(start + limit - 1, startId + total - 1)
-      const ids = makeRange(start, end)
+      const start = startId + (page.value - 1) * limit;
+      const end = Math.min(start + limit - 1, startId + total - 1);
+      const ids = makeRange(start, end);
 
       const tasks = ids.map((id) => () => PokemonService.getPokemon(id));
       listPokemon.value = await withConcurrency(tasks, concurrency);
@@ -53,7 +56,7 @@ export function usePokemonApi() {
     } finally {
       loading.value = false;
     }
-  }
+  };
 
   onMounted(async () => {
     fetchPage();
